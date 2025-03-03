@@ -1,4 +1,5 @@
 ## Rice Image Classification using CNN with PyTorch
+[![](Image.jpg)](https://unsplash.com/photos/person-farming-on-rice-field-a7n65pmnJ4Q)
 
 ### Overview
 This project implements a Convolutional Neural Network (CNN) for classifying rice images into five categories (Arborio, Basmati, Ipsala, Jasmine, Karacadag) using PyTorch. The model is trained on 75,000 images (15,000 per class) with a focus on reproducibility, performance optimization, and modular code design. The custom CNN achieves **98% test accuracy**, leveraging PyTorch's flexibility for dynamic computation graphs and GPU acceleration.
