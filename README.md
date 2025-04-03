@@ -2,57 +2,51 @@
 [![](Image.jpg)](https://unsplash.com/photos/person-farming-on-rice-field-a7n65pmnJ4Q)
 
 ### Overview
-This project implements a Convolutional Neural Network (CNN) for classifying rice images into five categories (Arborio, Basmati, Ipsala, Jasmine, Karacadag) using PyTorch. The model is trained on 75,000 images (15,000 per class) with a focus on reproducibility, performance optimization, and modular code design. The custom CNN achieves **98% test accuracy**, leveraging PyTorch's flexibility for dynamic computation graphs and GPU acceleration.
+This project implements a convolutional neural network (CNN) in PyTorch to classify images of rice. The goal is to develop a robust model capable of distinguishing between different varieties of rice, which can be useful for quality control, research or agricultural applications. The project covers all the steps—from data preprocessing and model design to training, evaluation, and visualization of results.
 
 <br>
 
 ### Project Workflow
-1. **Data Preparation**:
-   - Load dataset using PyTorch `ImageFolder` and split into training (80%), validation (10%), and test (10%) sets.
-   - Apply transformations: Resize (224x224), normalization, and augmentation (random rotation, horizontal flip).
-   - Create `DataLoader` instances with batch size 32 for efficient training.
+The project follows an end-to-end workflow:
 
-2. **Model Architecture**:
-   - **Custom CNN** (`RiceCNN` class):
-     - Layers: `Conv2d` → `BatchNorm2d` → `ReLU` → `MaxPool2d` → `Dropout` → Linear classifier.
-     - Kernel sizes: 3x3 for convolutional layers, 2x2 for max pooling.
+1. **Data Acquisition & Preprocessing**
+   - ***Dataset Collection:*** Images of rice are gathered from available datasets or captured from the field.
+   - ***Preprocessing:*** The images are resized, normalized, and augmented (if needed) to improve the robustness of the model.
+   - ***Splitting:*** The dataset is divided into training, validation, and testing sets.
 
-3. **Training Configuration**:
-   - **Loss Function**: CrossEntropyLoss.
-   - **Optimizer**: Adam with learning rate 0.001.
-   - **Scheduler**: StepLR (gamma=0.1 every 7 epochs).
-   - **Training Loop**: 15 epochs with batch-wise backpropagation and validation checks.
+2. **Model Design & Implementation**
+   - ***CNN Architecture:*** A custom CNN is built using PyTorch. The model includes several convolutional and pooling layers to extract features, followed by fully connected layers for classification.
+   - ***Compilation:*** The model is defined with a loss function (e.g., Cross-Entropy Loss) and an optimizer (e.g., Adam or SGD).
 
-4. **Evaluation**:
-   - Calculate test accuracy using `torchmetrics`.
-   - Generate confusion matrix and classification report (precision, recall, F1-score).
-   - Visualize training/validation loss curves and sample predictions.
+3. **Training & Evaluation**
+   - ***Training:*** The network is trained over multiple epochs. Training includes real-time monitoring of loss and accuracy on the validation set.
+   - ***Evaluation:*** The trained model is evaluated on the test dataset. Metrics such as accuracy, precision, recall, and confusion matrices are used to assess performance.
+   - ***Visualization:*** Training progress (loss and accuracy curves) and sample predictions are visualized to better understand the model's behavior.
 
-5. **Inference**:
-   - Save/load model weights (`rice_cnn.pth`) for predictions on new images.
+4. **Results Analysis**
+   - ***Performance Metrics:*** Final results include overall accuracy, per-class performance, and error analysis to identify potential misclassifications.
+   - ***Discussion:*** Observations on model strengths, weaknesses, and areas for future improvement are discussed.
 
 <br>
 
 ### Key Features
-- **PyTorch Flexibility**: Leverage dynamic computation graphs and GPU support via `device = "cuda" if torch.cuda.is_available() else "cpu"`.
-- **Data Pipeline**: Efficient loading with `DataLoader` and on-the-fly augmentation using `torchvision.transforms`.
-- **Reproducibility**: Manual seed configuration (`torch.manual_seed(42)`).
-- **Learning Rate Scheduling**: Adaptive LR adjustment for convergence optimization.
-- **Metrics Tracking**: TensorBoard integration for loss/accuracy visualization (code-ready).
+- **End-to-End Pipeline:** The project handles all phases from data loading and preprocessing to model training and evaluation.
+- **Custom CNN Architecture:** A tailored CNN designed specifically for rice image classification, leveraging PyTorch's flexibility.
+- **Data Augmentation:** Techniques such as rotation, flipping, and scaling (if applied) to improve model generalization.
+- **Performance Visualization:** Graphs and plots that show training/validation loss and accuracy trends, along with sample predictions.
+- **Modularity:** Code structured into sections for ease of understanding, maintenance, and future enhancements.
 
 <br>
 
 ### Results
-- **Test Accuracy**: **98%**  
-- **Validation Accuracy**: Reached 97.5% by epoch 15  
-- **Training Time**: ~30 seconds per epoch on GPU (Kaggle environment)  
-- **Confusion Matrix**: Shows strong class separation with minor confusion between visually similar varieties (e.g., Jasmine vs. Basmati).  
-- **Loss Curves**: Stable convergence without overfitting (training/validation loss: 0.06/0.08).
+- **Model Accuracy:** The CNN achieves high classification accuracy (e.g., **`over 99% on both models`** on the train set) in identifying rice types.
+- **Training Curves:** Loss and accuracy curves are provided to show convergence and detect any overfitting.
+- **Error Analysis:** A confusion matrix and sample misclassifications help pinpoint areas where the model might be improved.
 
 <br>
 
 ### Repository Contents
-- **`rice-classification-cnn-using-pytorch.ipynb`**: Jupyter Notebook with full code, visualizations, and explanations.
+- **`rice-classification-cnn-using-pytorch.ipynb`**: Jupyter Notebook with full code, visualizations and explanations.
 - **`Data`:** Contains the [Original Dataset](https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset/data) and you can see the cleaned dataset in notebook.
 - **`README.md`:** Project documentation.
 
