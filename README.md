@@ -2,7 +2,7 @@
 [![](Image.jpg)](https://unsplash.com/photos/person-farming-on-rice-field-a7n65pmnJ4Q)
 
 ### Overview
-This project implements a convolutional neural network (CNN) in PyTorch to classify images of rice. The goal is to develop a robust model capable of distinguishing between different varieties of rice, which can be useful for quality control, research or agricultural applications. The project covers all the steps—from data preprocessing and model design to training, evaluation, and visualization of results.
+This project implements a convolutional neural network (CNN) in PyTorch to classify images of rice. The goal is to develop a robust model capable of distinguishing between different varieties of rice, which can be useful for quality control, research or agricultural applications. The project covers all the steps—from data preprocessing and model design to training, evaluation and visualization of results.
 
 <br>
 
